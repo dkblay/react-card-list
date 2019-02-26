@@ -10,6 +10,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding: 20px;
 }
 
 .container {
@@ -52,4 +53,8 @@ body {
   margin-bottom: 60px;
   display: flex;
   justify-content: space-between;
+}
+
+.filter__select {
+  margin-left: 20px;
 }

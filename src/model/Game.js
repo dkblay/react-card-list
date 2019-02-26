@@ -21,23 +21,25 @@ class Game {
     this.type = type_id;
     this.slug = slug;
     this.attack = attack;
-    this.setColor();
+    this.color = this.setColor(this.colorId);
   }
 
-  setColor() {
-    switch (this.colorId) {
+  setColor(colorId) {
+    let color = null;
+    switch (colorId) {
       case 1:
-        this.color = colorCode.black;
+        color = colorCode.bigStone;
         break;
       case 2:
-        this.color = colorCode.gray;
+        color = colorCode.siverTree;
         break;
       case 3:
-        this.color = colorCode.blue;
+        color = colorCode.redDaMask;
         break;
       default:
-        this.color = colorCode.purple;
+        color = colorCode.ronChi;
     }
+    return color;
   }
 }
 

@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import { getGames } from "./api/api";
+import Pagination from "./components/Pagination";
 
 class App extends Component {
+  size = 12;
+
   state = {
     games: []
   };
@@ -10,20 +13,40 @@ class App extends Component {
     this.loadGames();
   }
 
-  loadGames = async () => {
+  loadGames = async (page = 1) => {
     try {
-      const games = await getGames();
-      this.setState({ games });
+      const { games, total } = await getGames({
+        size: this.size,
+        page
+      });
+      this.setState({ games, total });
     } catch (e) {
       console.error(e);
     }
   };
 
-  render() {
+  renderCards() {
     const { games } = this.state;
+    if (!games.length) {
+      return <div>No Items Found...</div>;
+    }
+    return games.map(({ id, color }) => (
+      <div
+        key={id}
+        className="games__item"
+        style={{ backgroundColor: color }}
+      />
+    ));
+  }
+
+  render() {
+    const { total } = this.state;
     return (
-      <div className="App">
-        <pre>{JSON.stringify(games, null, 4)}</pre>
+      <div className="container">
+        <div className="games">{this.renderCards()}</div>
+        {!!total && (
+          <Pagination onClick={this.loadGames} total={total} size={this.size} />
+        )}
       </div>
     );
   }

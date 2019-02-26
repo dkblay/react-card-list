@@ -1,6 +1,6 @@
 export const colorCode = {
-  black: "#182E3F",
-  gray: "#6CB6A0",
-  blue: "#DC5F46",
-  purple: "#E9B24F"
+  bigStone: "#182E3F",
+  siverTree: "#6CB6A0",
+  redDaMask: "#DC5F46",
+  ronChi: "#E9B24F"
 };
